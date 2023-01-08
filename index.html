@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //стандартный вариант
+        class Validator {
+            isEmail(email) {
+                const emailFormat = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                if (email.match(emailFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            isDomain(domain) {
+                const domainFormat = /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
+                if (domain.match(domainFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            isDate(date) {
+                const dateFormat = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
+                if (date.match(dateFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            isPhone(tel) {
+                const telFormat = /(\+7|8)[\s(]*\d{3}[)\s]*\d{3}[\s-]?\d{2}[\s-]?\d{2}/;
+                if (tel.match(telFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+        var validator = new Validator();
+        console.log(validator.isEmail('alisa@mail.ru'));
+        console.log(validator.isDomain('itgirlschool.ru'));
+        console.log(validator.isDate('12.05.2021'));
+        console.log(validator.isPhone('+7(910)123-45-67')); //тут используем формат своей страны
+        //статистический вариант
+        class ValidatorStatic {
+            static isEmail(email) {
+                const emailFormat = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                if (email.match(emailFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            static isDomain(domain) {
+                const domainFormat = /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/;
+                if (domain.match(domainFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            static isDate(date) {
+                const dateFormat = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
+                if (date.match(dateFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            static isPhone(tel) {
+                const telFormat = /(\+7|8)[\s(]*\d{3}[)\s]*\d{3}[\s-]?\d{2}[\s-]?\d{2}/;
+                if (tel.match(telFormat)) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+        console.log(ValidatorStatic.isEmail('alisa@mail.ru'));
+        console.log(ValidatorStatic.isDomain('itgirlschool.ru'));
+        console.log(ValidatorStatic.isDate('12.05.2021'));
+        console.log(ValidatorStatic.isPhone('+7(910)123-45-67')); //тут используем формат своей страны
+    </script>
+</body>
+
+</html>
